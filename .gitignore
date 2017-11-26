@@ -1,5 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-/target/*
 ### Java template
 # Compiled class file
 *.class
@@ -46,3 +45,5 @@ target/generated-sources/
 target/generated-test-sources/
 target/maven-archiver/
 target/test-classes/
+/target/
+/.idea/
