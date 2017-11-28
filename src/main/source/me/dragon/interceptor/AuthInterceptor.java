@@ -1,10 +1,15 @@
 package me.dragon.interceptor;
 
 import me.dragon.core.exception.BusinessException;
+import me.dragon.model.dto.auth.AuthResDto;
+import me.dragon.model.dto.auth.AuthTokenDto;
+import me.dragon.service.biz.auth.AuthService;
 import me.dragon.utils.PublicUtil;
-import me.dragon.utils.StringUtils;
+import me.dragon.utils.base.ThreadLocalMap;
+import me.dragon.utils.base.Wrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -17,12 +22,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by dragon on 11/27/2017.
+ *
+ * @author dragon
+ * @date 11/27/2017
  */
 @Service
 public class AuthInterceptor implements HandlerInterceptor {
 
     private static Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
+
+    @Autowired
+    private AuthService authService;
 
     @Value("${cookie.passToken}")
     private String passTokenKey;
@@ -52,9 +62,10 @@ public class AuthInterceptor implements HandlerInterceptor {
             return true;
         }
         // COOKIE
+        final String bearer = "Bearer "; // 魔法值
         String authHeader = request.getHeader("Authorization");
         Cookie[] cookies = request.getCookies();
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+        if (authHeader == null || !authHeader.startsWith(bearer)) {
             // 取cookie如果取不到不允许通过
             if (!PublicUtil.isEmpty(cookies)) {
                 for (Cookie cookie : cookies) {
@@ -72,7 +83,31 @@ public class AuthInterceptor implements HandlerInterceptor {
             String errorMsg = "{\"code\":-2,\"description\" :\"Missing or invalid Authorization header\"}";
             return handleException(request, response, errorMsg);
         }
-        return false;
+        final String token = authHeader.substring(7);
+        AuthTokenDto authTokenDto;
+        AuthResDto authResDto = null;
+        try {
+            ThreadLocalMap.put("VIEW_TOKEN", token);
+            Wrapper<AuthTokenDto> authTokenDtoWrapper = authService.getAuthTokenDtoByToken(token);
+            if(PublicUtil.isNotEmpty(authTokenDtoWrapper) && authTokenDtoWrapper.getCode() == Wrapper.SUCCESS_CODE){
+                authTokenDto = authTokenDtoWrapper.getResult();
+                authResDto = authTokenDto.getAuthResDto();
+                String newToken = authTokenDto.getNewToken();
+                if(PublicUtil.isNotEmpty(newToken)){
+                    response.setHeader("newToken", newToken);
+                }
+            }
+            if(PublicUtil.isEmpty(authResDto)){
+                throw new BusinessException("验签失败,DTO为空");
+            }
+            ThreadLocalMap.put("TOKEN_USER", authResDto.getUserName());
+            ThreadLocalMap.put("TOKEN_AUTH_DTO", authResDto);
+        } catch (Exception e) {
+            logger.error("==> JWT验签, 出现异常={}", e.getMessage(), e);
+            String errorMsg = "{\"code\":-3 ,\"message\" :\"Invalid token\"}";
+            return handleException(request, response, errorMsg);
+        }
+        return true;
     }
 
     @Override

@@ -31,6 +31,31 @@ public class PublicUtil {
         return false;
     }
 
+    @SuppressWarnings("rawtypes")
+    public static boolean isNotEmpty(Object pObj) {
+        if (pObj == null) {
+            return false;
+        }
+        if (pObj == "") {
+            return false;
+        }
+        if (pObj instanceof String) {
+            if (((String) pObj).length() == 0) {
+                return false;
+            }
+        } else if (pObj instanceof Collection) {
+            if (((Collection) pObj).size() == 0) {
+                return false;
+            }
+        } else if (pObj instanceof Map) {
+            if (((Map) pObj).size() == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     /**
      *
      * Title: splitList
