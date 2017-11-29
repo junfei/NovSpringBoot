@@ -7,7 +7,7 @@
     <!-- 异常信息 拦截 -->
     <bean id="exceptionInterceptorLog" class="me.dragon.core.exception.ExceptionInterceptorLog"></bean>
     <aop:config>
-        <aop:pointcut id="exceptionTrade" expression="execution(* me.dragon.restcontroller.*.*(..))"/>
+        <aop:pointcut id="exceptionTrade" expression="execution(* me.dragon.web.restcontroller.*.*(..))"/>
         <aop:advisor pointcut-ref="exceptionTrade" advice-ref="exceptionInterceptorLog"/>
     </aop:config>
 </beans>

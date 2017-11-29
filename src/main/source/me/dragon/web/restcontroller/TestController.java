@@ -1,4 +1,4 @@
-package me.dragon.restcontroller;
+package me.dragon.web.restcontroller;
 
 import io.swagger.annotations.Api;
 import me.dragon.utils.RedisUtils;

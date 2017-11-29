@@ -1,8 +1,5 @@
 package me.dragon.utils.base;
 
-/**
- * Created by dragon on 11/28/2017.
- */
 import java.util.HashMap;
 import java.util.Map;
 

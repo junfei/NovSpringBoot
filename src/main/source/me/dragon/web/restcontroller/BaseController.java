@@ -1,10 +1,9 @@
-package me.dragon.restcontroller;
+package me.dragon.web.restcontroller;
 
 import me.dragon.config.RestConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.ui.Model;
 
 import javax.annotation.Resource;
 

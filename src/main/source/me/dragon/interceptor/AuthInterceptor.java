@@ -62,7 +62,8 @@ public class AuthInterceptor implements HandlerInterceptor {
             return true;
         }
         // COOKIE
-        final String bearer = "Bearer "; // 魔法值
+        // 魔法值
+        final String bearer = "Bearer ";
         String authHeader = request.getHeader("Authorization");
         Cookie[] cookies = request.getCookies();
         if (authHeader == null || !authHeader.startsWith(bearer)) {
