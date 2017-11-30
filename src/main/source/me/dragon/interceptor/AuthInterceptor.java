@@ -61,10 +61,10 @@ public class AuthInterceptor implements HandlerInterceptor {
         if (request.getMethod().toUpperCase().equals("OPTIONS")) {
             return true;
         }
-        // COOKIE
         // 魔法值
         final String bearer = "Bearer ";
         String authHeader = request.getHeader("Authorization");
+        // COOKIE
         Cookie[] cookies = request.getCookies();
         if (authHeader == null || !authHeader.startsWith(bearer)) {
             // 取cookie如果取不到不允许通过
