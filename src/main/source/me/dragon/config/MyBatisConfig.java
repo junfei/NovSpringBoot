@@ -50,7 +50,7 @@ public class MyBatisConfig {
         sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});
         sqlSessionFactoryBean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
         // 加载mapper配置文件
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/me/dragon/mapper/*.xml"));
         return sqlSessionFactoryBean.getObject();
     }
 
