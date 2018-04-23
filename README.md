@@ -11,3 +11,5 @@
 	- 轻量，优美，易用
 - 适用于前后端分离项目，提供RESTful接口，并通过Swagger查看接口详情
 
+#### 更新
+- 在现有基础上增加了Ali Druid连接池，具体配置可参考项目：https://github.com/dragon-yuan/uac-titan
