@@ -11,6 +11,7 @@ public class StringUtils {
 
     /**
      * 判断字符串是否为空
+     *
      * @param str
      * @return
      */
@@ -20,6 +21,7 @@ public class StringUtils {
 
     /**
      * 判断字符串是否为空
+     *
      * @param str
      * @return
      */
@@ -29,16 +31,17 @@ public class StringUtils {
 
     /**
      * 判断字符串组是否为空
+     *
      * @param strs
      * @return
      */
     public static boolean isStrsEmptyOrNull(String... strs) {
-        if(strs != null && strs.length != 0) {
+        if (strs != null && strs.length != 0) {
             String[] arr$ = strs;
             int len$ = strs.length;
-            for(int i$ = 0; i$ < len$; ++i$) {
+            for (int i$ = 0; i$ < len$; ++i$) {
                 String str = arr$[i$];
-                if(str == null || str.trim().equals("")) {
+                if (str == null || str.trim().equals("")) {
                     return true;
                 }
             }
@@ -60,6 +63,7 @@ public class StringUtils {
 
     /**
      * 返回一个utf8的字符串
+     *
      * @param str
      * @return str
      */
@@ -76,6 +80,7 @@ public class StringUtils {
 
     /**
      * 返回一个html
+     *
      * @param href
      * @return href
      */
@@ -95,6 +100,7 @@ public class StringUtils {
 
     /**
      * 如果字符串没有超过最长显示长度返回原字符串，否则从开头截取指定长度并加...返回。
+     *
      * @param str
      * @param length
      * @return str

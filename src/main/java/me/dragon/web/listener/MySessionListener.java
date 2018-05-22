@@ -12,18 +12,18 @@ import javax.servlet.http.HttpSessionListener;
  * Created by dragon on 11/29/2017.
  */
 @WebListener
-public class MySessionListener implements HttpSessionListener{
+public class MySessionListener implements HttpSessionListener {
 
     private static final Logger logger = LoggerFactory.getLogger(MySessionListener.class);
 
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
-        logger.info("Session 创建...");
+        logger.info("Session init...");
         HttpSession session = httpSessionEvent.getSession();
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        logger.info("Session 销毁...");
+        logger.info("Session destroy ...");
     }
 }

@@ -1,7 +1,7 @@
 package me.dragon.mapper;
 
 import me.dragon.config.MyMapper;
-import me.dragon.model.entity.User;
+import me.dragon.domain.User;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserMapper extends MyMapper<User> {
-
 }

@@ -1,4 +1,4 @@
-package me.dragon.core.exception;
+package me.dragon.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

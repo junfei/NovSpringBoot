@@ -9,10 +9,10 @@ import java.util.Map;
 public class PublicUtil {
     @SuppressWarnings("rawtypes")
     public static boolean isEmpty(Object pObj) {
-        if(pObj == null){
+        if (pObj == null) {
             return true;
         }
-        if(pObj == ""){
+        if (pObj == "") {
             return true;
         }
         if (pObj instanceof String) {
@@ -57,13 +57,11 @@ public class PublicUtil {
 
 
     /**
-     *
      * Title: splitList
-     *
+     * <p>
      * Description:拆分list，按500条拆分
      *
      * @param <T>
-     *
      * @param list
      * @return
      */

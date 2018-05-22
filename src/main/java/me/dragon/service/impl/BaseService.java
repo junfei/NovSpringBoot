@@ -1,16 +1,13 @@
-package me.dragon.service;
+package me.dragon.service.impl;
 
+import me.dragon.service.IService;
 import org.apache.ibatis.session.RowBounds;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
 public abstract class BaseService<T> implements IService<T> {
-
-    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     protected Mapper<T> mapper;
@@ -74,7 +71,7 @@ public abstract class BaseService<T> implements IService<T> {
         int result = 0;
         for (T record : list) {
             int count = mapper.delete(record);
-            if(count < 1){
+            if (count < 1) {
                 throw new RuntimeException("插入数据失败!");
             }
             result += count;

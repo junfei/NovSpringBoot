@@ -1,4 +1,4 @@
-package me.dragon.core.exception;
+package me.dragon.exception;
 
 public class BusinessException extends RuntimeException {
     private static final long serialVersionUID = 1L;

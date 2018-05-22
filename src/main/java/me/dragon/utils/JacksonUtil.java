@@ -23,7 +23,7 @@ public class JacksonUtil {
         formatedMapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         // 所有日期格式都统一为固定格式
         formatedMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
-        formatedMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,false);
+        formatedMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 
     /**
@@ -115,7 +115,6 @@ public class JacksonUtil {
 
     /**
      * json数据转化为对象(TypeReference)
-
      */
     @SuppressWarnings("unchecked")
     public static <T> T parseJsonWithFormat(String jsonValue, TypeReference<T> valueTypeRef) throws Exception {

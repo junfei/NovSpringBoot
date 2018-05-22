@@ -1,10 +1,9 @@
-package me.dragon.model.entity;
+package me.dragon.domain;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**

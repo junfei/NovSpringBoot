@@ -21,15 +21,15 @@ public class RedisUtils {
     @Autowired
     private StringRedisTemplate rt;
 
-    public String getNowCode(String envLock, String prefix, int prefixLen){
+    public String getNowCode(String envLock, String prefix, int prefixLen) {
         SimpleDateFormat df = new SimpleDateFormat("yyMMdd");
         String dateStr = df.format(new Date());
-        String key = envLock + prefix +dateStr;
-        String valuePrefix = prefix +dateStr;
-        Long newValue =1L;
+        String key = envLock + prefix + dateStr;
+        String valuePrefix = prefix + dateStr;
+        Long newValue = 1L;
         try {
             synchronized (this) {
-                ValueOperations<String,String> ops  = rt.opsForValue();
+                ValueOperations<String, String> ops = rt.opsForValue();
                 if (!rt.hasKey(key)) {
                     ops.set(key, String.valueOf(1L));
                     rt.expire(key, 1L, TimeUnit.DAYS);

@@ -8,7 +8,9 @@ public class ThreadLocalMap {
     protected final static ThreadLocal<Map<String, Object>> threadContext = new MapThreadLocal();
 
     private ThreadLocalMap() {
-    };
+    }
+
+    ;
 
     public static void put(String key, Object value) {
         getContextMap().put(key, value);
@@ -27,6 +29,7 @@ public class ThreadLocalMap {
         protected Map<String, Object> initialValue() {
             return new HashMap<String, Object>() {
                 private static final long serialVersionUID = 3637958959138295593L;
+
                 @Override
                 public Object put(String key, Object value) {
                     return super.put(key, value);
@@ -37,6 +40,7 @@ public class ThreadLocalMap {
 
     /**
      * 取得thread context Map的实例。
+     *
      * @return thread context Map的实例
      */
     protected static Map<String, Object> getContextMap() {

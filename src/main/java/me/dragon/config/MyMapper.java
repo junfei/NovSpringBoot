@@ -3,6 +3,7 @@ package me.dragon.config;
 /**
  * Created by dragon on 11/4/2017.
  */
+
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
 

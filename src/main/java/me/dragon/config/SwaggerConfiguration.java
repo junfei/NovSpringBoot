@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@Profile({ "dev", "pro" })
+@Profile({"dev", "pro"})
 public class SwaggerConfiguration {
 
     @Bean
@@ -33,7 +33,7 @@ public class SwaggerConfiguration {
     private ApiInfo apiInfo() {
         String email = "i@dragon-yuan.me";
         String name = "dragon";
-        String url = "http://dragon-yuan.me";
+        String url = "https://www.dragon-yuan.me";
         Contact contact = new Contact(name, url, email);
         return new ApiInfoBuilder().title("项目接口").description("API").contact(contact).build();
     }

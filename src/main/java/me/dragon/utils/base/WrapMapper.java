@@ -19,7 +19,7 @@ public class WrapMapper {
     }
 
     public static <E> Wrapper<E> wrap(int code) {
-        return wrap(code, (String)null);
+        return wrap(code, (String) null);
     }
 
     public static <E> Wrapper<E> wrap(Exception e) {
