@@ -15,4 +15,5 @@
 
 #### 更新
 - 通用Mapper，易于CURD
-- 在现有基础上增加了Ali Druid连接池，具体配置可参考项目：https://github.com/dragon-yuan/uac-titan
+- 在现有基础上增加了Ali Druid连接池
+- 近期新项目：UAC-TITAN：实现用户的SSO登录，具体可参考项目：https://github.com/dragon-yuan/uac-titan
