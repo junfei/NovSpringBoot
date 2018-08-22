@@ -1,0 +1,13 @@
+
+# idea config
+.idea
+*.iml
+
+# eclipse config
+.settings
+.classpath
+.project
+
+*.classpath
+.DS_Store
+Thumbs.db
